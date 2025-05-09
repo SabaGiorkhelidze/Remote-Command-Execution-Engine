@@ -4,9 +4,9 @@ import app from './src/app';
 import jwt from "jsonwebtoken"
 
 const token = jwt.sign(
-  { userId: 123 }, // your payload
-  'default_secret', // your secret
-  { expiresIn: '1h' } // token expires in 1 hour
+  { userId: 123 }, 
+  'default_secret', 
+  { expiresIn: '1h' }
 );
 
 console.log(token);
