@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { executeRemoteCommand } from './command.service';
 
-export const runCommand = async (request: Request, response: Response) => {
+export const runCommand = async (request: Request, response: Response): Promise<any> => {
     const { command } = request.body
 
     if (!command) {
