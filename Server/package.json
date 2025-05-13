@@ -15,7 +15,10 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
-    "ssh2": "^1.16.0"
+    "pg": "^8.16.0",
+    "reflect-metadata": "^0.2.2",
+    "ssh2": "^1.16.0",
+    "typeorm": "^0.3.23"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",

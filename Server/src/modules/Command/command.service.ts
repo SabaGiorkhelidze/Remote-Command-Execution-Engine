@@ -1,5 +1,5 @@
 import { Client } from 'ssh2';
-import { sshConfig } from '../../config';
+import { sshConfig } from '../../config/SSHConfig';
 import { saveToHistory } from '../History/saveToHistory.service';
 
 export const executeRemoteCommand = (command: string): Promise<string> => {
