@@ -1,4 +1,5 @@
 import { DataSource } from 'typeorm';
+import { CommandExecutionLog } from '../Entity/CommandExecutionLog';
 
 export const AppDataSource = new DataSource({
     type: 'postgres',
@@ -7,7 +8,7 @@ export const AppDataSource = new DataSource({
     username: 'myuser',
     password: 'mypassword',
     database: 'mydatabase',
-    entities: ['src/entity/**/*.ts'],
+    entities: [CommandExecutionLog],
     synchronize: true,
     logging: false, // true if neccessery
 });

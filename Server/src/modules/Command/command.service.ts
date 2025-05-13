@@ -17,7 +17,7 @@ export const executeRemoteCommand = (command: string): Promise<string> => {
                         command,
                         output: error.message,
                         timestamp: new Date(),
-                        success: false, // Add success property
+                        success: false, 
                     });
                     return reject(error);
                 }
@@ -56,7 +56,7 @@ export const executeRemoteCommand = (command: string): Promise<string> => {
                 command,
                 output: `SSH Connection error: ${err.message}`,
                 timestamp: new Date(),
-                success: false, // Add success property
+                success: false, 
             });
             console.error("SSH connection error details:", err);
             reject(new Error(`SSH Connection error: ${err.message}`));

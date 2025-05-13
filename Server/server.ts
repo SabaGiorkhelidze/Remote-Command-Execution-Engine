@@ -21,14 +21,11 @@ console.log(token);
 AppDataSource.initialize()
   .then(() => {
     console.log('Data Source has been initialized!');
-    // start your app logic here
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
   })
   .catch((err) => {
     console.error('Error during Data Source initialization:', err);
   });
-
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
