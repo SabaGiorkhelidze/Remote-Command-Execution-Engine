@@ -41,7 +41,7 @@ export class CommandExecutionLog {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @ManyToOne(() => User, (user) => user.logs, { eager: true })
+  // @ManyToOne(() => User, (user) => user.logs, { eager: true })
   @JoinColumn({ name: "userID" }) 
   userRef!: User;
 
