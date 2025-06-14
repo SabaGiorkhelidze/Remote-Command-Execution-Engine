@@ -3,7 +3,8 @@ import { Request, Response } from "express";
 import { fetchGitReposForUser, fetchCommitsForRepo } from "./git.service";
 
 
-export const gitController = async (request: Request, response: Response) => {
+
+export const gitController = async (request: Request, response: Response): Promise<any> => {
     const username = request.query.user?.toString();
     const repositorie = request.query.repo // optional for commit listing (future addition)
 

@@ -8,7 +8,7 @@ export interface SSHInput {
 }
 
 export type ExecutionRecord = {
-  user: string;
+  user?: string;
   host: string;
   command: string;
   output: string;

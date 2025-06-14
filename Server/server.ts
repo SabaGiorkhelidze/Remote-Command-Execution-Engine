@@ -12,7 +12,7 @@ app.use(express.json())
 AppDataSource.initialize()
   .then(() => {
     console.log('Data Source has been initialized!');
-    const PORT = process.env.PORT || 3000;
+    const PORT = process.env.PORT;
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
