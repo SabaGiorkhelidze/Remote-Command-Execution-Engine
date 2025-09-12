@@ -8,7 +8,7 @@ export class CommandController {
     this.commandService = new CommandService();
   }
 
-  async runCommand(req: Request, res: Response): Promise<any> {
+  runCommand = async(req: Request, res: Response): Promise<void> => {
     const { command } = req.body;
 
     if (!command) {
@@ -18,9 +18,9 @@ export class CommandController {
 
     try {
       const result = await this.commandService.executeRemoteCommand(command);
-      return res.status(200).json({ success: true, result });
+      res.status(200).json({ success: true, result });
     } catch (error: any) {
-      return res.status(500).json({ success: false, error: error.message });
+      res.status(500).json({ success: false, error: `this is ${error.message}` });
     }
   }
 }

@@ -1,1 +1,4 @@
-works, but need to filter info i need and also make the service a lot faster than it is now. 
+works, but need to filter info i need and also make the service a lot faster than it is now. - done
+
+
+Paginated Requests: If a repository has a large number of commits,  use pagination
