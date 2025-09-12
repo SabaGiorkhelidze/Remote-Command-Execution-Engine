@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { runCommand } from './command.controller';
+import { CommandController } from './command.controller';
 import { authMiddleware } from '../../middlewares/auth.middleware';
 
+const router = Router();
+const commandController = new CommandController();
 
-const router = Router()
 
-router.post('/execute', authMiddleware, runCommand)
-// router.get('/history', authMiddleware, getHistory);
+router.post('/execute', authMiddleware, commandController.runCommand);
 
-export default router
+export default router;

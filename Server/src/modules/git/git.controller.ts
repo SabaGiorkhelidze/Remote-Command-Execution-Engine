@@ -1,40 +1,49 @@
 import { Request, Response } from "express";
+import { GitService } from "./git.service";
 
-import { fetchGitReposForUser, fetchCommitsForRepo } from "./git.service";
+const gitService: GitService = new GitService();
 
+export class GitController {
+  private gitService: GitService;
 
+  constructor() {
+    this.gitService = new GitService();
+  }
 
-export const gitController = async (request: Request, response: Response): Promise<any> => {
+  async runGitService(request: Request, response: Response): Promise<any> {
     const username = request.query.user?.toString();
-    const repositorie = request.query.repo // optional for commit listing (future addition)
+    const repositorie = request.query.repo;
 
-    if (typeof username !== 'string') {
-        return response.status(400).json({ error: 'Missing or invalid ?user=username param' });
+    if (typeof username !== "string") {
+      return response
+        .status(400)
+        .json({ error: "Missing or invalid ?user=username param" });
     }
-
-
 
     try {
-        const repositories = await fetchGitReposForUser(username)
-        const result = [];
+      const repositories = await gitService.fetchGitReposForUser(username);
+      const result = [];
 
-        for (const repo of repositories) {
-            if (repositorie && repo.name !== repositorie) continue
+      for (const repo of repositories) {
+        if (repositorie && repo.name !== repositorie) continue;
 
-            const commits = await fetchCommitsForRepo(username, repo.name)
-            for (const commit of commits) {
-                result.push({
-                    repo: repo.name,
-                    sha: commit.sha,
-                    message: commit.commit.message,
-                    url: commit.html_url,
-                });
-            }
-
+        const commits = await gitService.fetchCommitsForRepo(
+          username,
+          repo.name
+        );
+        for (const commit of commits) {
+          result.push({
+            repo: repo.name,
+            sha: commit.sha,
+            message: commit.commit.message,
+            url: commit.html_url,
+          });
         }
+      }
 
-        return response.status(200).json({ success: true, result: result });
+      return response.status(200).json({ success: true, result: result });
     } catch (error: any) {
-        return response.status(500).json({ error: error.message })
+      return response.status(500).json({ error: error.message });
     }
-} 
+  }
+}

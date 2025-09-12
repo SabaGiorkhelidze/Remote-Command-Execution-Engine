@@ -1,17 +1,33 @@
-import axios from "axios";
+import { Commit, Repo } from "../../types/gitTypes";
 import { githubConnect } from "../../utils/axiosHelper";
 
-export const fetchGitReposForUser = async (username: string): Promise<any[]> => {
-    const res = await githubConnect.get(`/users/${username}/repos`)
+export class GitService {
+  async fetchGitReposForUser(username: string): Promise<Repo[]> {
+    try {
+      const res = await githubConnect.get(`/users/${username}/repos`);
+      return res.data;
+    } catch (error: any) {
+      throw new Error(
+        `Failed to fetch repositories for user ${username}: ${error.message}`
+      );
+    }
+  }
 
-    return res.data
-}
-
-
-export const fetchCommitsForRepo = async (owner: string, repoName: string, limit: number=5) => {
-    const res = await githubConnect.get(`/repos/${owner}/${repoName}/commits`, {
-        params: {per_page: limit}
-    })
-
-    return res.data
+  async fetchCommitsForRepo(
+    owner: string,
+    repoName: string,
+    limit: number = 5
+  ): Promise<Commit[]> {
+    try {
+      const res = await githubConnect.get(
+        `/repos/${owner}/${repoName}/commits`,
+        { params: { per_page: limit } }
+      );
+      return res.data;
+    } catch (error: any) {
+      throw new Error(
+        `Failed to fetch commits for repository ${repoName}: ${error.message}`
+      );
+    }
+  }
 }
