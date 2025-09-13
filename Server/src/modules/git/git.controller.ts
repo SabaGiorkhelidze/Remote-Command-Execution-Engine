@@ -1,8 +1,6 @@
 import { Request, Response } from "express";
 import { GitService } from "./git.service";
 
-const gitService: GitService = new GitService();
-
 export class GitController {
   private gitService: GitService;
 
@@ -21,7 +19,7 @@ export class GitController {
     }
 
     try {
-      const repositories = await gitService.fetchGitReposForUser(username);
+      const repositories = await this.gitService.fetchGitReposForUser(username);
 
       if (!repository) {
         return response
@@ -39,7 +37,7 @@ export class GitController {
 
       const result = await Promise.all(
         filteredRepos.map(async (repo) => {
-          const commits = await gitService.fetchCommitsForRepo(
+          const commits = await this.gitService.fetchCommitsForRepo(
             username,
             repo.name
           );

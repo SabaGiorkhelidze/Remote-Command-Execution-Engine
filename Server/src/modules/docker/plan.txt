@@ -1,0 +1,14 @@
+simple docker container start 
+
+listt of containers with data (like docker ps -a) but on a host machine
+
+retrive logs from specific container(id)
+
+save logs to a file with datestamp - optional
+
+docker compose 
+
+access docker containers to remote vms (create new docker())
+
+
+

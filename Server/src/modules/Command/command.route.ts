@@ -6,6 +6,6 @@ const router = Router();
 const commandController = new CommandController();
 
 
-router.post('/execute', authMiddleware, commandController.runCommand);
+router.post('/execute-command', authMiddleware, commandController.runCommand);
 
 export default router;
