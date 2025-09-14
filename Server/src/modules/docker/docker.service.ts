@@ -9,7 +9,12 @@ export class DockerService {
     this.docker = new Docker();
   }
 
-  async startContainer(image: string, name: string, cmd?: string[], ports?: Record<string, string>) {
+  async startContainer(
+    image: string,
+    name: string,
+    cmd?: string[],
+    ports?: Record<string, string>
+  ) {
     const portBindings = normalizePorts(ports);
 
     await ensureImage(this.docker, image);
@@ -22,9 +27,23 @@ export class DockerService {
         PortBindings: portBindings,
       },
     });
-    
+
     (await container).start();
 
     return container;
   }
+
+  async getAllContainers() {
+    const infos = await this.docker.listContainers({ all: true });
+    return infos.map((i) => ({
+      id: i.Id,
+      names: i.Names,
+      image: i.Image,
+      state: i.State,
+      status: i.Status,
+      ports: i.Ports,
+      // labels: i.Labels,
+    }));
+  }
+  async getContainerById(id: string) {}
 }

@@ -5,6 +5,7 @@ const dockerRouter = Router()
 
 const dockerController = new DockerController()
 
-dockerRouter.post("/start-container", dockerController.runDockerService)
+dockerRouter.post("/start-container", dockerController.startContainerController)
+dockerRouter.get('/get-containers', dockerController.getAllContainerController)
 
 export default dockerRouter

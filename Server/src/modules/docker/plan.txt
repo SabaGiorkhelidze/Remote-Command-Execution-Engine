@@ -1,4 +1,4 @@
-simple docker container start 
+simple docker container start - done hell yeah!!!!
 
 listt of containers with data (like docker ps -a) but on a host machine
 

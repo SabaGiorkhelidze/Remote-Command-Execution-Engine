@@ -9,7 +9,7 @@ export class DockerController {
     this.dockerService = new DockerService();
   }
 
-  runDockerService = async (request: Request, response: Response) => {
+  startContainerController = async (request: Request, response: Response) => {
     const { container, image, cmd, ports } =
       request.body as startContainerTypes;
 
@@ -26,4 +26,14 @@ export class DockerController {
       response.status(500).json({ error: "Failed to start container" });
     }
   };
+
+  getAllContainerController = async (request: Request, response: Response) => {
+    try {
+        const listOfContainers = await this.dockerService.getAllContainers()
+        response.status(200).json({ success: true, listOfContainers});
+    } catch (error) {
+    console.error(error);
+      response.status(500).json({ error: `Failed to fetch containers, with error ${error}` })
+    }
+  }
 }
