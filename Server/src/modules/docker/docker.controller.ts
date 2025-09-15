@@ -29,11 +29,26 @@ export class DockerController {
 
   getAllContainerController = async (request: Request, response: Response) => {
     try {
-        const listOfContainers = await this.dockerService.getAllContainers()
-        response.status(200).json({ success: true, listOfContainers});
+      const listOfContainers = await this.dockerService.getAllContainers();
+      response.status(200).json({ success: true, listOfContainers });
     } catch (error) {
-    console.error(error);
-      response.status(500).json({ error: `Failed to fetch containers, with error ${error}` })
+      console.error(error);
+      response
+        .status(500)
+        .json({ error: `Failed to fetch containers, with error ${error}` });
     }
-  }
+  };
+
+  getContainerByIdController = async (request: Request, response: Response) => {
+    const { id } = request.params;
+    try {
+      const containerInfo = await this.dockerService.getContainerById(id);
+      response.status(200).json({ success: true, containerInfo });
+    } catch (error) {
+      console.error(error);
+      response
+        .status(500)
+        .json({ error: `error while fetching container, error ${error}` });
+    }
+  };
 }

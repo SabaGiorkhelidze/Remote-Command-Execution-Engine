@@ -45,5 +45,11 @@ export class DockerService {
       // labels: i.Labels,
     }));
   }
-  async getContainerById(id: string) {}
+  async getContainerById(id: string) {
+    if (!id) throw new Error("Container ID is required");
+
+    const container = this.docker.getContainer(id);
+    const info = await container.inspect();
+    return info;
+  }
 }
