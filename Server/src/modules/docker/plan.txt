@@ -1,8 +1,11 @@
 simple docker container start - done hell yeah!!!!
 
-listt of containers with data (like docker ps -a) but on a host machine
+listt of containers with data (like docker ps -a)  - done
+
+retrive data from specific container(id) - done
 
 retrive logs from specific container(id)
+
 
 save logs to a file with datestamp - optional
 
