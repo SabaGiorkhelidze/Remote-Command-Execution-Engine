@@ -1,16 +1,20 @@
 import { DataSource } from 'typeorm';
 import { CommandExecutionLog } from '../Entity/CommandExecutionLog';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
 
 export const AppDataSource = new DataSource({
-    type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'myuser',
-    password: 'mypassword',
-    database: 'mydatabase',
+    type: process.env.DB_TYPE as "postgres",
+    host: process.env.DB_HOST,
+    port: Number(process.env.DB_PORT),
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE,
     entities: [CommandExecutionLog],
     synchronize: true,
-    logging: false, // true if neccessery
+    logging: false,
 });
-//put this data into env
+
 
