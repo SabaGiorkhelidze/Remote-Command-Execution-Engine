@@ -3,11 +3,9 @@ import { sshConfig } from '../../config/SSHConfig';
 import { HistoryService } from '../History/history.service'; 
 
 export class CommandService {
-  private historyService: HistoryService;
+  // private historyService: HistoryService;
 
-  constructor() {
-    this.historyService = new HistoryService();
-  }
+  constructor(private historyService: HistoryService) {}
 
 
   async executeRemoteCommand(command: string): Promise<string> {

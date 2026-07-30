@@ -3,11 +3,9 @@ import { normalizePorts } from "../../utils/normilizePorts";
 import { ensureImage } from "../../utils/dockerImageChecker";
 
 export class DockerService {
-  private docker: Docker;
+  
 
-  constructor() {
-    this.docker = new Docker();
-  }
+  constructor(private docker: Docker) {}
 
   async startContainer(
     image: string,

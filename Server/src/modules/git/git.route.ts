@@ -1,9 +1,8 @@
 import { Router } from "express";
-import { GitController } from "./git.controller";
+import { gitController } from "../../container";
 
-const gitRouter = Router()
-const gitController =  new GitController();
+const gitRouter = Router();
 
-gitRouter.get('/gitRepos', gitController.runGitService)
+gitRouter.get('/gitRepos', gitController.runGitService);
 
-export default gitRouter
+export default gitRouter;

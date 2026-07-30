@@ -3,11 +3,8 @@ import { Request, Response } from "express";
 import { startContainerTypes } from "../../types/dockerTypes";
 
 export class DockerController {
-  private dockerService: DockerService;
 
-  constructor() {
-    this.dockerService = new DockerService();
-  }
+  constructor(private dockerService: DockerService) {}
 
   startContainerController = async (request: Request, response: Response) => {
     const { container, image, cmd, ports } =

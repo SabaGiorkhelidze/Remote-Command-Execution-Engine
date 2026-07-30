@@ -5,11 +5,9 @@ import { AppDataSource } from "../../config/data-source";
 import { Repository } from "typeorm";
 
 export class HistoryService {
-  private repo: Repository<CommandExecutionLog>;
+  // private repo: Repository<CommandExecutionLog>;
 
-  constructor() {
-    this.repo = AppDataSource.getRepository(CommandExecutionLog);
-  }
+  constructor(private repo: Repository<CommandExecutionLog>) {}
 
 
   async saveHistory(record: ExecutionRecord): Promise<CommandExecutionLog> {

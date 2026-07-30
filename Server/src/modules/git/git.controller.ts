@@ -2,11 +2,9 @@ import { Request, Response } from "express";
 import { GitService } from "./git.service";
 
 export class GitController {
-  private gitService: GitService;
+  
 
-  constructor() {
-    this.gitService = new GitService();
-  }
+  constructor(private gitService: GitService) {}
 
   runGitService = async (request: Request, response: Response): Promise<any> => {
     const username = request.query.user?.toString();

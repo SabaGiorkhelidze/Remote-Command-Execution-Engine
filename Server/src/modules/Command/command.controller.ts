@@ -2,11 +2,9 @@ import { Request, Response } from 'express';
 import { CommandService } from './command.service';
 
 export class CommandController {
-  private commandService: CommandService;
+  // private commandService: CommandService;
 
-  constructor() {
-    this.commandService = new CommandService();
-  }
+  constructor(private commandService: CommandService) {}
 
   runCommand = async(req: Request, res: Response): Promise<void> => {
     const { command } = req.body;

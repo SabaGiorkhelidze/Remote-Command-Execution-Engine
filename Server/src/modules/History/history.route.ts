@@ -1,9 +1,7 @@
 import { Router } from 'express';
-import { HistoryService } from './history.service';
+import { historyService } from '../../container';
 
-const historyService = new HistoryService();
 const historyRouter = Router();
-
 
 historyRouter.get('/', async (req, res) => {
   try {
@@ -13,5 +11,4 @@ historyRouter.get('/', async (req, res) => {
     res.status(500).json({ message: 'Error retrieving history', error: error.message });
   }
 });
-
 export default historyRouter;

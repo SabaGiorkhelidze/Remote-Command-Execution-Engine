@@ -1,8 +1,8 @@
 import express from 'express';
 import commandRouter from './modules/Command/command.route';
-import historyRouter from './modules/History/history.route';
-import gitRouter from './modules/Git/git.route'
+import gitRouter from './modules/git/git.route'
 import dockerRouter from './modules/docker/docker.route';
+import historyRouter from './modules/History/history.route';
 
 const app = express();
 

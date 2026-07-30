@@ -1,12 +1,10 @@
 import { Router } from "express";
-import { DockerController } from "./docker.controller";
+import { dockerController } from "../../container";
 
-const dockerRouter = Router()
+const dockerRouter = Router();
 
-const dockerController = new DockerController()
+dockerRouter.post("/start-container", dockerController.startContainerController);
+dockerRouter.get('/get-containers', dockerController.getAllContainerController);
+dockerRouter.get('/get-container/:id', dockerController.getContainerByIdController);
 
-dockerRouter.post("/start-container", dockerController.startContainerController)
-dockerRouter.get('/get-containers', dockerController.getAllContainerController)
-dockerRouter.get('/get-container/:id', dockerController.getContainerByIdController)
-
-export default dockerRouter
+export default dockerRouter;
