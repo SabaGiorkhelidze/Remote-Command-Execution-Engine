@@ -1,11 +1,10 @@
 import { Client } from 'ssh2';
 import { sshConfig } from '../../config/SSHConfig';
-import { HistoryService } from '../History/history.service'; 
+import { IHistoryService } from '../../Interfaces/IHistoryService';
+import { ICommandService } from '../../Interfaces/ICommandService';
 
-export class CommandService {
-  // private historyService: HistoryService;
-
-  constructor(private historyService: HistoryService) {}
+export class CommandService implements ICommandService {
+  constructor(private historyService: IHistoryService) {}
 
 
   async executeRemoteCommand(command: string): Promise<string> {

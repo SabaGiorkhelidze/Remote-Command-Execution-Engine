@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { HistoryService } from "./history.service";
+import { IHistoryService } from "../../Interfaces/IHistoryService";
 
 export class HistoryController {
 
-    constructor(private historyService: HistoryService) {}
+    constructor(private historyService: IHistoryService) {}
 
     runHistoryService = async (request: Request, response: Response): Promise<any> => {
         try {

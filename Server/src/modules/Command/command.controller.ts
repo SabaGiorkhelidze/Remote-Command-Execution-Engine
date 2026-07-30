@@ -1,10 +1,8 @@
 import { Request, Response } from 'express';
-import { CommandService } from './command.service';
+import { ICommandService } from '../../Interfaces/ICommandService';
 
 export class CommandController {
-  // private commandService: CommandService;
-
-  constructor(private commandService: CommandService) {}
+  constructor(private commandService: ICommandService) {}
 
   runCommand = async(req: Request, res: Response): Promise<void> => {
     const { command } = req.body;

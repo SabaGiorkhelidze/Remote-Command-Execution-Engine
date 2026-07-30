@@ -1,7 +1,8 @@
 import { Commit, Repo } from "../../types/gitTypes";
 import { githubConnect } from "../../utils/axiosHelper";
+import { IGitService } from "../../Interfaces/IGitService";
 
-export class GitService {
+export class GitService implements IGitService {
   async fetchGitReposForUser(username: string): Promise<Repo[]> {
     try {
       const res = await githubConnect.get(`/users/${username}/repos`);

@@ -1,10 +1,10 @@
-import { DockerService } from "./docker.service";
+import { IDockerService } from "../../Interfaces/IDockerService";
 import { Request, Response } from "express";
 import { startContainerTypes } from "../../types/dockerTypes";
 
 export class DockerController {
 
-  constructor(private dockerService: DockerService) {}
+  constructor(private dockerService: IDockerService) {}
 
   startContainerController = async (request: Request, response: Response) => {
     const { container, image, cmd, ports } =

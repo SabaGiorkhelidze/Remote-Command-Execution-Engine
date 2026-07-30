@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { GitService } from "./git.service";
+import { IGitService } from "../../Interfaces/IGitService";
 
 export class GitController {
-  
 
-  constructor(private gitService: GitService) {}
+
+  constructor(private gitService: IGitService) {}
 
   runGitService = async (request: Request, response: Response): Promise<any> => {
     const username = request.query.user?.toString();

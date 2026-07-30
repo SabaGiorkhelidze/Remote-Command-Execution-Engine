@@ -1,9 +1,9 @@
 import Docker from "dockerode";
 import { normalizePorts } from "../../utils/normilizePorts";
 import { ensureImage } from "../../utils/dockerImageChecker";
+import { IDockerService } from "../../Interfaces/IDockerService";
 
-export class DockerService {
-  
+export class DockerService implements IDockerService {
 
   constructor(private docker: Docker) {}
 
@@ -49,5 +49,10 @@ export class DockerService {
     const container = this.docker.getContainer(id);
     const info = await container.inspect();
     return info;
+  }
+
+  async getLogsFromContainerById(id: string, writeFile: boolean = false){
+    if(!id) throw new Error("Container ID is required");
+
   }
 }

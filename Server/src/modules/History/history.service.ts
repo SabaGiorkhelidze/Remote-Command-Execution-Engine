@@ -1,12 +1,10 @@
 
 import { ExecutionRecord } from "../../types/types";
 import { CommandExecutionLog } from "../../Entity/CommandExecutionLog";
-import { AppDataSource } from "../../config/data-source";
 import { Repository } from "typeorm";
+import { IHistoryService } from "../../Interfaces/IHistoryService";
 
-export class HistoryService {
-  // private repo: Repository<CommandExecutionLog>;
-
+export class HistoryService implements IHistoryService {
   constructor(private repo: Repository<CommandExecutionLog>) {}
 
 
