@@ -4,6 +4,7 @@ import { AppDataSource } from "./config/data-source";
 import { CommandExecutionLog } from "./Entity/CommandExecutionLog";
 
 import { HistoryService } from "./modules/History/history.service";
+import { HistoryController } from "./modules/History/history.controller";
 
 import { CommandService } from "./modules/Command/command.service";
 import { CommandController } from "./modules/Command/command.controller";
@@ -16,7 +17,9 @@ import { GitController } from "./modules/git/git.controller";
 
 
 
+
 const historyService = new HistoryService(AppDataSource.getRepository(CommandExecutionLog));
+export const historyController = new HistoryController(historyService);
 
 const commandService = new CommandService(historyService);
 export const commandController = new CommandController(commandService);
